@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from django.views import generic
 from .models import Post
 
+
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_on')
     return render(request, 'home.html', {'posts': posts})
 
 

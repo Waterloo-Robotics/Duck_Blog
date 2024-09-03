@@ -1,9 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-{% for post in posts %}
+<!-- {% for post in posts %}
 <div class="post-entry">
-    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-<p>{{ post.body }}</p>
+    <h2 class="text-center"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+<p class="text-center">{{ post.body|slice:":200" }}</p>
 </div>
-{% endfor %}
+{% endfor %} -->
+<div class="row">
+<div class="col-md-8 mt-3 left"></div>
+{% for post in posts %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.body|slice:":200" }}</p>
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+</div>
 {% endblock content %}
